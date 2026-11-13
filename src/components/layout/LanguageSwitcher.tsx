@@ -20,7 +20,7 @@ export function LanguageSwitcher() {
     <div
       role="group"
       aria-label={t("lang.label")}
-      className="flex items-center rounded-xl border border-slate-200 bg-slate-100 p-1"
+      className="flex items-center rounded-xl border border-slate-200 bg-slate-100 p-1 dark:border-slate-700 dark:bg-slate-800"
     >
       {LOCALES.map((candidate) => {
         const isActive = candidate === locale;
@@ -36,8 +36,8 @@ export function LanguageSwitcher() {
             className={cn(
               "rounded-lg px-2.5 py-1 text-xs font-bold transition-colors",
               isActive
-                ? "bg-white text-slate-900 shadow-sm"
-                : "text-slate-500 hover:text-slate-900",
+                ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-slate-50"
+                : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100",
             )}
           >
             {LOCALE_LABELS[candidate]}

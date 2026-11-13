@@ -12,17 +12,17 @@ export function Pricing({ locale }: { locale: Locale }) {
   return (
     <section
       id="pricing"
-      className="scroll-mt-24 border-y border-slate-200/80 bg-white py-16 sm:py-24"
+      className="scroll-mt-24 border-y border-slate-200/80 bg-white py-16 sm:py-24 dark:border-slate-800 dark:bg-slate-950"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-14 max-w-2xl text-center">
           <p className="text-xs font-bold uppercase tracking-wider text-blue-600">
             {dict["pricing.eyebrow"]}
           </p>
-          <h2 className="mt-2 text-2xl font-extrabold text-slate-900 sm:text-4xl">
+          <h2 className="mt-2 text-2xl font-extrabold text-slate-900 sm:text-4xl dark:text-slate-50">
             {dict["pricing.title"]}
           </h2>
-          <p className="mt-3 text-sm text-slate-600 sm:text-base">
+          <p className="mt-3 text-sm text-slate-600 sm:text-base dark:text-slate-400">
             {dict["pricing.subtitle"]}
           </p>
         </div>

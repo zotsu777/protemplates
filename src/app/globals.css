@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-brand-navy: #0f172a;
   --color-brand-blue: #2563eb;
@@ -16,10 +18,26 @@
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
+    color-scheme: light;
+    background-color: #f8fafc;
+  }
+
+  html.dark {
+    color-scheme: dark;
+    background-color: #020817;
   }
 
   body {
+    min-height: 100vh;
     text-rendering: optimizeLegibility;
+    background-color: #f8fafc;
+    color: #0f172a;
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+
+  html.dark body {
+    background-color: #020817;
+    color: #e2e8f0;
   }
 
   ::selection {

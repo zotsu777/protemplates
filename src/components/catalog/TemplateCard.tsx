@@ -35,7 +35,7 @@ export function TemplateCard({ template, onPreview }: TemplateCardProps) {
   }
 
   return (
-    <article className="flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl motion-reduce:hover:translate-y-0">
+    <article className="flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl motion-reduce:hover:translate-y-0 dark:border-slate-800 dark:bg-slate-900">
       <div>
         <div
           className={cn(
@@ -95,16 +95,16 @@ export function TemplateCard({ template, onPreview }: TemplateCardProps) {
             </span>
           </div>
 
-          <h3 className="text-lg font-extrabold leading-snug text-slate-900">
+          <h3 className="text-lg font-extrabold leading-snug text-slate-900 dark:text-slate-50">
             <Link
               href={`/${locale}/templates/${template.slug}`}
-              className="hover:text-blue-600"
+              className="hover:text-blue-600 dark:hover:text-blue-400"
             >
               {title}
             </Link>
           </h3>
 
-          <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-slate-600 sm:text-sm">
+          <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-slate-600 sm:text-sm dark:text-slate-300">
             {localize(template.description, locale)}
           </p>
 
@@ -112,7 +112,7 @@ export function TemplateCard({ template, onPreview }: TemplateCardProps) {
             {template.tools.map((tool) => (
               <li
                 key={tool}
-                className="rounded-md border border-slate-200/80 bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-600"
+                className="rounded-md border border-slate-200/80 bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
               >
                 {tool}
               </li>
@@ -121,11 +121,11 @@ export function TemplateCard({ template, onPreview }: TemplateCardProps) {
         </div>
       </div>
 
-      <div className="flex items-center gap-2.5 border-t border-slate-100 bg-slate-50/70 px-5 py-3.5">
+      <div className="flex items-center gap-2.5 border-t border-slate-100 bg-slate-50/70 px-5 py-3.5 dark:border-slate-800 dark:bg-slate-950/70">
         <button
           type="button"
           onClick={() => onPreview(template.id)}
-          className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-xs font-bold text-slate-800 transition-colors hover:bg-slate-100"
+          className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-xs font-bold text-slate-800 transition-colors hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
         >
           <Eye aria-hidden="true" className="h-3.5 w-3.5" />
           {t("card.preview")}

@@ -128,7 +128,7 @@ export default async function LocaleLayout({
       dir={getDirection(locale)}
       className={`${inter.variable} ${cairo.variable} scroll-smooth`}
     >
-      <body className="min-h-dvh bg-slate-50 font-sans text-slate-900 antialiased">
+      <body className="min-h-dvh bg-slate-50 font-sans text-slate-900 antialiased transition-colors duration-200 dark:bg-slate-950 dark:text-slate-100">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-[80] focus:rounded-lg focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white"

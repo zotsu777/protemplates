@@ -62,18 +62,18 @@ export function Catalog({
   }
 
   return (
-    <section id="catalog" className="scroll-mt-24 py-16 sm:py-24">
+    <section id="catalog" className="scroll-mt-24 py-16 sm:py-24 dark:bg-slate-950">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-blue-600">
               {t("catalog.eyebrow")}
             </p>
-            <h2 className="mt-1 text-2xl font-extrabold text-slate-900 sm:text-4xl">
+            <h2 className="mt-1 text-2xl font-extrabold text-slate-900 sm:text-4xl dark:text-slate-50">
               {t("catalog.title")}
             </h2>
           </div>
-          <p className="max-w-md text-sm text-slate-600 sm:text-base">
+          <p className="max-w-md text-sm text-slate-600 sm:text-base dark:text-slate-300">
             {t("catalog.subtitle")}
           </p>
         </div>
@@ -100,11 +100,11 @@ export function Catalog({
                 className={cn(
                   "shrink-0 rounded-xl border px-4 py-2.5 text-xs font-bold transition-all sm:text-sm",
                   isActive
-                    ? "border-slate-900 bg-slate-900 text-white shadow-sm"
-                    : "border-slate-200 bg-white text-slate-700 hover:border-blue-400",
+                    ? "border-slate-900 bg-slate-900 text-white shadow-sm dark:border-slate-700 dark:bg-slate-800"
+                    : "border-slate-200 bg-white text-slate-700 hover:border-blue-400 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-blue-500",
                   !isActive &&
                     candidate === "freebies" &&
-                    "text-emerald-700 hover:border-emerald-400",
+                    "text-emerald-700 hover:border-emerald-400 dark:text-emerald-400 dark:hover:border-emerald-500",
                 )}
               >
                 {t(`category.${candidate}`)} ({count})
@@ -113,7 +113,10 @@ export function Catalog({
           })}
         </div>
 
-        <p aria-live="polite" className="mb-6 text-xs font-semibold text-slate-500">
+        <p
+          aria-live="polite"
+          className="mb-6 text-xs font-semibold text-slate-500 dark:text-slate-400"
+        >
           {t("catalog.showing", {
             shown: visibleTemplates.length,
             total: templates.length,
@@ -131,11 +134,11 @@ export function Catalog({
             ))}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center">
-            <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 text-slate-400">
+          <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center dark:border-slate-700 dark:bg-slate-900">
+            <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-500">
               <LayoutGrid aria-hidden="true" className="h-6 w-6" />
             </span>
-            <p className="mt-4 text-sm font-semibold text-slate-600">
+            <p className="mt-4 text-sm font-semibold text-slate-600 dark:text-slate-300">
               {t("catalog.empty")}
             </p>
             <button

@@ -7,13 +7,13 @@ export function WhyUs({ locale }: { locale: Locale }) {
   const dict = dictionaries[locale];
 
   return (
-    <section id="why-us" className="scroll-mt-24 py-16 sm:py-24">
+    <section id="why-us" className="scroll-mt-24 py-16 sm:py-24 dark:bg-slate-950">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-14 max-w-2xl text-center">
           <p className="text-xs font-bold uppercase tracking-wider text-blue-600">
             {dict["why.eyebrow"]}
           </p>
-          <h2 className="mt-2 text-balance text-2xl font-extrabold text-slate-900 sm:text-4xl">
+          <h2 className="mt-2 text-balance text-2xl font-extrabold text-slate-900 sm:text-4xl dark:text-slate-50">
             {dict["why.title"]}
           </h2>
         </div>
@@ -22,15 +22,15 @@ export function WhyUs({ locale }: { locale: Locale }) {
           {WHY_PILLARS.map((pillar) => (
             <article
               key={pillar.icon}
-              className="rounded-2xl border border-slate-200/90 bg-white p-7 shadow-sm"
+              className="rounded-2xl border border-slate-200/90 bg-white p-7 shadow-sm dark:border-slate-800 dark:bg-slate-900"
             >
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600 text-xl text-white">
                 <ContentGlyph name={pillar.icon} className="h-5 w-5" />
               </div>
-              <h3 className="text-xl font-extrabold text-slate-900">
+              <h3 className="text-xl font-extrabold text-slate-900 dark:text-slate-50">
                 {pillar.title[locale]}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
+              <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base dark:text-slate-300">
                 {pillar.body[locale]}
               </p>
             </article>
