@@ -1,5 +1,6 @@
 import pptxgen from "pptxgenjs";
 
+import { fixBidiSpacing } from "./bidi.mjs";
 import { COLORS, FONT_AR, FONT_FR, SLIDE } from "./theme.mjs";
 
 /**
@@ -35,6 +36,26 @@ function textOptions(rtl) {
     rtlMode: rtl,
     align: rtl ? "right" : "left",
   };
+}
+
+/**
+ * PowerPoint moves the neutral space after a Latin token to the wrong side of
+ * that token in RTL paragraphs. Inserting a right-to-left mark keeps the gap.
+ * Applied once per slide so every text call (titles, bullets, KPIs) gets it.
+ */
+function enableBidi(slide) {
+  const addText = slide.addText.bind(slide);
+  slide.addText = (text, options = {}) => {
+    if (options.rtlMode && typeof text === "string") {
+      return addText(fixBidiSpacing(text, true), options);
+    }
+    return addText(text, options);
+  };
+  return slide;
+}
+
+function addSlide(pptx) {
+  return enableBidi(pptx.addSlide());
 }
 
 function addChrome(slide, { rtl, index, total, label }) {
@@ -441,7 +462,8 @@ function addKpi(slide, slideData, context) {
       fill: { color: position === 0 ? COLORS.blue : COLORS.emerald },
       line: { color: COLORS.white, width: 0 },
     });
-    slide.addText(item.value, {
+    const value = item.value;
+    slide.addText(value, {
       ...textOptions(rtl),
       x: x + 0.28,
       y: 2.85,
@@ -670,7 +692,7 @@ export function renderDeck({ title, subject, rtl, slides, outputPath }) {
   const total = slides.length;
 
   slides.forEach((slideData, position) => {
-    const slide = pptx.addSlide();
+    const slide = addSlide(pptx);
     const index = position + 1;
     const context = { rtl, index, total };
 

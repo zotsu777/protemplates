@@ -27,6 +27,11 @@ const NAVY = COLORS.navy;
 const SLATE = COLORS.slate600;
 const LIGHT = COLORS.slate100;
 
+/** Wraps LTR content (amounts, phones, URLs) so RTL paragraphs keep order. */
+function ltr(value) {
+  return `\u200E${value}\u200E`;
+}
+
 function text(value, options = {}) {
   return new TextRun({
     text: value,
@@ -181,7 +186,7 @@ async function save(buffer, outputPath) {
 function contactLine(rtl) {
   return paragraph(
     rtl
-      ? "الدار البيضاء، المغرب · +212 6 00 00 00 00 · contact@exemple.ma · linkedin.com/in/exemple"
+      ? `الدار البيضاء، المغرب · ${ltr("+212 6 00 00 00 00")} · ${ltr("contact@exemple.ma")} · ${ltr("linkedin.com/in/exemple")}`
       : "Casablanca, Maroc · +212 6 00 00 00 00 · contact@exemple.ma · linkedin.com/in/exemple",
     { rtl, size: 18, color: COLORS.slate500, spacing: { after: 200 } },
   );
@@ -507,7 +512,7 @@ const COMPANY_AR = [
   "العنوان: 12، شارع نموذج، الدار البيضاء",
   "المعرف الموحد للمقاولة: 002849102000045",
   "مقاول ذاتي · السجل التجاري: 123456",
-  "الهاتف: +212 6 00 00 00 00 · contact@exemple.ma",
+  `الهاتف: ${ltr("+212 6 00 00 00 00")} · ${ltr("contact@exemple.ma")}`,
 ];
 
 const INVOICE_ITEMS = [
@@ -544,7 +549,7 @@ export async function buildInvoiceDoc(outputPath, { lang, kind }) {
         vat: "الضريبة على القيمة المضافة (غير مطبقة)",
         net: "المبلغ الصافي للأداء",
         payment: "طريقة الأداء",
-        paymentValue: "تحويل بنكي · CIH Bank — RIB 230 780 0000000000000000",
+        paymentValue: `تحويل بنكي · ${ltr("CIH Bank — RIB 230 780 0000000000000000")}`,
         legal:
           "مقاول ذاتي مسجل — لا تخضع الفاتورة للضريبة على القيمة المضافة طبقاً للنظام الخاص بالمقاول الذاتي.",
         signatureClient: "توقيع العميل",
@@ -584,7 +589,12 @@ export async function buildInvoiceDoc(outputPath, { lang, kind }) {
 
   const rows = [
     [labels.designation, labels.quantity, labels.unit, labels.total],
-    ...items.map((item) => [item[0], item[1], item[2], item[2]]),
+    ...items.map((item) => [
+      item[0],
+      item[1],
+      rtl ? ltr(item[2]) : item[2],
+      rtl ? ltr(item[2]) : item[2],
+    ]),
   ];
 
   const children = [
@@ -606,7 +616,7 @@ export async function buildInvoiceDoc(outputPath, { lang, kind }) {
       alignment: AlignmentType.RIGHT,
       spacing: { after: 60 },
     }),
-    paragraph(`${labels.number} : ${number}`, {
+    paragraph(`${labels.number} : ${rtl ? ltr(number) : number}`, {
       rtl,
       size: 19,
       color: SLATE,
@@ -617,8 +627,7 @@ export async function buildInvoiceDoc(outputPath, { lang, kind }) {
       [
         [labels.client, labels.date],
         [labels.clientDetails, rtl ? "12 نونبر 2026" : "12 novembre 2026"],
-        [labels.validity, ""],
-        [labels.validityValue, ""],
+        [labels.validity, labels.validityValue],
       ],
       { widths: [62, 38], rtl, headerFill: LIGHT },
     ),
@@ -630,32 +639,91 @@ export async function buildInvoiceDoc(outputPath, { lang, kind }) {
       rows: [
         new TableRow({
           children: [
-            cell([new Paragraph({ children: [] })]),
             cell(
               [
                 new Paragraph({
                   alignment: rtl ? AlignmentType.RIGHT : AlignmentType.LEFT,
-                  spacing: { after: 60 },
+                  spacing: { after: 0 },
                   children: [text(labels.subtotal, { size: 18, color: SLATE })],
                 }),
+              ],
+              { width: 70, fill: LIGHT },
+            ),
+            cell(
+              [
                 new Paragraph({
-                  alignment: rtl ? AlignmentType.RIGHT : AlignmentType.LEFT,
-                  spacing: { after: 60 },
-                  children: [text(labels.vat, { size: 18, color: SLATE })],
-                }),
-                new Paragraph({
-                  alignment: rtl ? AlignmentType.RIGHT : AlignmentType.LEFT,
+                  alignment: rtl ? AlignmentType.LEFT : AlignmentType.RIGHT,
                   spacing: { after: 0 },
                   children: [
-                    text(`${labels.net} : 2 500,00 MAD`, {
-                      size: 22,
-                      bold: true,
-                      color: NAVY,
+                    text(rtl ? ltr("2 500,00 MAD") : "2 500,00 MAD", {
+                      size: 18,
+                      color: SLATE,
                     }),
                   ],
                 }),
               ],
-              { width: 55, fill: COLORS.slate100 },
+              { width: 30, fill: LIGHT },
+            ),
+          ],
+        }),
+        new TableRow({
+          children: [
+            cell(
+              [
+                new Paragraph({
+                  alignment: rtl ? AlignmentType.RIGHT : AlignmentType.LEFT,
+                  spacing: { after: 0 },
+                  children: [text(labels.vat, { size: 18, color: SLATE })],
+                }),
+              ],
+              { width: 70, fill: LIGHT },
+            ),
+            cell(
+              [
+                new Paragraph({
+                  alignment: rtl ? AlignmentType.LEFT : AlignmentType.RIGHT,
+                  spacing: { after: 0 },
+                  children: [
+                    text(rtl ? ltr("0,00 MAD") : "0,00 MAD", {
+                      size: 18,
+                      color: SLATE,
+                    }),
+                  ],
+                }),
+              ],
+              { width: 30, fill: LIGHT },
+            ),
+          ],
+        }),
+        new TableRow({
+          children: [
+            cell(
+              [
+                new Paragraph({
+                  alignment: rtl ? AlignmentType.RIGHT : AlignmentType.LEFT,
+                  spacing: { after: 0 },
+                  children: [
+                    text(labels.net, { size: 21, bold: true, color: COLORS.white }),
+                  ],
+                }),
+              ],
+              { width: 70, fill: COLORS.navy },
+            ),
+            cell(
+              [
+                new Paragraph({
+                  alignment: rtl ? AlignmentType.LEFT : AlignmentType.RIGHT,
+                  spacing: { after: 0 },
+                  children: [
+                    text(rtl ? ltr("2 500,00 MAD") : "2 500,00 MAD", {
+                      size: 21,
+                      bold: true,
+                      color: COLORS.white,
+                    }),
+                  ],
+                }),
+              ],
+              { width: 30, fill: COLORS.navy },
             ),
           ],
         }),

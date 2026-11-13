@@ -62,9 +62,9 @@ export const WHY_PILLARS: readonly WhyPillar[] = [
   {
     icon: "play",
     title: {
-      en: "Under 30-min edit + video guides",
-      fr: "Modifiable en 30 min + guides vidéo",
-      ar: "تعديل في 30 دقيقة + أدلة فيديو",
+      en: "Under 30-min edit + written guides",
+      fr: "Modifiable en 30 min + guides écrits",
+      ar: "تعديل في 30 دقيقة + أدلة مكتوبة",
     },
     body: {
       en: "No technical expertise required. Each template ships with short step-by-step tutorials in Darija/Arabic and French, so you can customise and publish fast.",

@@ -321,7 +321,18 @@ async function buildBundle() {
 
   await buildShowcaseSite(path.join(dir, "03-Site-vitrine"));
   await buildCodLanding(path.join(dir, "04-Landing-COD"));
-  await buildSocialKit(path.join(dir, "05-Kit-reseaux-sociaux"));
+  const socialDir = path.join(dir, "05-Kit-reseaux-sociaux");
+  await buildSocialKit(path.join(socialDir, "visuels"));
+  await renderCarousel({
+    outputPath: path.join(socialDir, "Carrousel-Instagram-FR.pptx"),
+    slides: CAROUSEL_FR,
+    rtl: false,
+  });
+  await renderCarousel({
+    outputPath: path.join(socialDir, "Carrousel-Instagram-AR.pptx"),
+    slides: CAROUSEL_AR,
+    rtl: true,
+  });
 
   await writeText(
     path.join(dir, "LIRE-MOI.txt"),

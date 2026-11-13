@@ -1,11 +1,12 @@
 "use client";
 
-import { Check, Clock, Eye, Languages, Plus, ShoppingCart } from "lucide-react";
+import { Check, Clock, Download, Eye, Languages, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 
 import { useCart } from "@/components/providers/CartProvider";
 import { useI18n } from "@/components/providers/LocaleProvider";
 import { useToast } from "@/components/providers/ToastProvider";
+import { formatBytes, getDownload } from "@/lib/downloads";
 import { formatMad } from "@/lib/format";
 import { localize } from "@/lib/templates";
 import { cn } from "@/lib/utils";
@@ -24,6 +25,7 @@ export function TemplateCard({ template, onPreview }: TemplateCardProps) {
   const isFree = template.priceMad === 0;
   const isInCart = items.includes(template.id);
   const title = localize(template.title, locale);
+  const download = getDownload(template.slug);
 
   function handleAdd() {
     const result = add(template.id);
@@ -131,30 +133,36 @@ export function TemplateCard({ template, onPreview }: TemplateCardProps) {
           {t("card.preview")}
         </button>
 
-        <button
-          type="button"
-          onClick={handleAdd}
-          disabled={isInCart}
-          className={cn(
-            "inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs font-bold transition-colors",
-            isInCart
-              ? "cursor-default bg-emerald-50 text-emerald-700"
-              : "bg-blue-600 text-white shadow-sm hover:bg-blue-500",
-          )}
-        >
-          {isInCart ? (
-            <Check aria-hidden="true" className="h-3.5 w-3.5" />
-          ) : isFree ? (
-            <Plus aria-hidden="true" className="h-3.5 w-3.5" />
-          ) : (
-            <ShoppingCart aria-hidden="true" className="h-3.5 w-3.5" />
-          )}
-          {isInCart
-            ? t("card.inCart")
-            : isFree
-              ? t("card.addFree")
-              : t("card.add")}
-        </button>
+        {isFree && download ? (
+          <a
+            href={download.href}
+            download
+            title={`${download.files} files · ${formatBytes(download.bytes)}`}
+            className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-emerald-500 px-3 py-2.5 text-xs font-bold text-slate-950 shadow-sm transition-colors hover:bg-emerald-400"
+          >
+            <Download aria-hidden="true" className="h-3.5 w-3.5" />
+            {t("detail.addFree")}
+          </a>
+        ) : (
+          <button
+            type="button"
+            onClick={handleAdd}
+            disabled={isInCart}
+            className={cn(
+              "inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs font-bold transition-colors",
+              isInCart
+                ? "cursor-default bg-emerald-50 text-emerald-700"
+                : "bg-blue-600 text-white shadow-sm hover:bg-blue-500",
+            )}
+          >
+            {isInCart ? (
+              <Check aria-hidden="true" className="h-3.5 w-3.5" />
+            ) : (
+              <ShoppingCart aria-hidden="true" className="h-3.5 w-3.5" />
+            )}
+            {isInCart ? t("card.inCart") : t("card.add")}
+          </button>
+        )}
       </div>
     </article>
   );

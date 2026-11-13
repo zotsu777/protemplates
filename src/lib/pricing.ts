@@ -41,17 +41,17 @@ export const PRICING_TIERS: readonly PricingTier[] = [
       en: [
         "1 bilingual student CV",
         "Auto-entrepreneur invoice",
-        "Quick-start video guide",
+        "Quick-start written guide",
       ],
       fr: [
         "1 CV étudiant bilingue",
         "Facture auto-entrepreneur",
-        "Guide vidéo de démarrage",
+        "Guide écrit de démarrage",
       ],
       ar: [
         "سيرة ذاتية واحدة للطالب ثنائية اللغة",
         "فاتورة المقاول الذاتي",
-        "دليل فيديو للبدء السريع",
+        "دليل مكتوب للبدء السريع",
       ],
     },
     cta: {

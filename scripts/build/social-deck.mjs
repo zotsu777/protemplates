@@ -1,5 +1,6 @@
 import pptxgen from "pptxgenjs";
 
+import { fixBidiSpacing } from "./bidi.mjs";
 import { COLORS, FONT_AR, FONT_FR } from "./theme.mjs";
 
 /**
@@ -201,6 +202,7 @@ function renderCarousel({ outputPath, slides, rtl }) {
   pptx.lang = rtl ? "ar-MA" : "fr-MA";
 
   const fontFace = rtl ? FONT_AR : FONT_FR;
+  const fix = (value) => fixBidiSpacing(value, rtl);
 
   slides.forEach((data, position) => {
     const slide = pptx.addSlide();
@@ -270,7 +272,7 @@ function renderCarousel({ outputPath, slides, rtl }) {
       align: rtl ? "left" : "right",
     });
 
-    slide.addText(data.kicker.toUpperCase(), {
+    slide.addText(fix(data.kicker.toUpperCase()), {
       x: 0.75,
       y: 1.55,
       w: SIZE - 1.5,
@@ -284,7 +286,7 @@ function renderCarousel({ outputPath, slides, rtl }) {
       align: rtl ? "right" : "left",
     });
 
-    slide.addText(data.title, {
+    slide.addText(fix(data.title), {
       x: 0.75,
       y: 2.2,
       w: SIZE - 1.5,
@@ -299,7 +301,7 @@ function renderCarousel({ outputPath, slides, rtl }) {
       lineSpacingMultiple: 1.08,
     });
 
-    slide.addText(data.body, {
+    slide.addText(fix(data.body), {
       x: 0.75,
       y: 5.25,
       w: SIZE - 1.5,

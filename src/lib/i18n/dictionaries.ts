@@ -49,7 +49,7 @@ const en = {
   "catalog.eyebrow": "Curated library",
   "catalog.title": "Ready-to-use digital templates",
   "catalog.subtitle":
-    "Every template ships with clean source files, lifetime updates and beginner video tutorials in Arabic and French.",
+    "Every template ships with clean source files, lifetime updates and beginner-friendly written guides in Arabic and French.",
   "catalog.showing": "Showing {shown} of {total} templates",
   "catalog.empty": "No templates in this category yet.",
   "catalog.reset": "Show all templates",
@@ -86,7 +86,7 @@ const en = {
   "preview.ready": "Ready to export",
   "preview.footerLtr": "Native left-to-right alignment (LTR)",
   "preview.footerRtl": "Native right-to-left alignment (RTL)",
-  "preview.tutorial": "AR/FR video tutorial included",
+  "preview.tutorial": "AR/FR written guide included",
   "preview.free": "Free",
 
   "cart.title": "Your cart",
@@ -113,9 +113,9 @@ const en = {
   "checkout.successBadge": "Order confirmed",
   "checkout.successTitle": "Your files are ready",
   "checkout.successBody":
-    "Paid {total} via {method}. Download your source files and AR/FR tutorial guides below.",
+    "Paid {total} via {method}. Download your source files and AR/FR written guides below.",
   "checkout.download": "Download",
-  "checkout.fileHint": "ZIP source + AR/FR video guide",
+  "checkout.fileHint": "ZIP source + AR/FR written guide",
   "checkout.error": "Something went wrong. Please try again.",
 
   "toast.added": "“{title}” added to cart",
@@ -217,7 +217,7 @@ const fr: Dictionary = {
   "catalog.eyebrow": "Bibliothèque sélectionnée",
   "catalog.title": "Templates digitaux prêts à l’emploi",
   "catalog.subtitle":
-    "Chaque template inclut des fichiers sources propres, les mises à jour à vie et des tutoriels vidéo pour débutants en arabe et en français.",
+    "Chaque template inclut des fichiers sources propres, les mises à jour à vie et des guides écrits pour débutants en arabe et en français.",
   "catalog.showing": "Affichage de {shown} templates sur {total}",
   "catalog.empty": "Aucun template dans cette catégorie pour le moment.",
   "catalog.reset": "Afficher tous les templates",
@@ -254,7 +254,7 @@ const fr: Dictionary = {
   "preview.ready": "Prêt à exporter",
   "preview.footerLtr": "Alignement natif de gauche à droite (LTR)",
   "preview.footerRtl": "Alignement natif de droite à gauche (RTL)",
-  "preview.tutorial": "Tutoriel vidéo AR/FR inclus",
+  "preview.tutorial": "Guide écrit AR/FR inclus",
   "preview.free": "Gratuit",
 
   "cart.title": "Votre panier",
@@ -281,9 +281,9 @@ const fr: Dictionary = {
   "checkout.successBadge": "Commande confirmée",
   "checkout.successTitle": "Vos fichiers sont prêts",
   "checkout.successBody":
-    "{total} réglés via {method}. Téléchargez vos fichiers sources et les guides vidéo AR/FR ci-dessous.",
+    "{total} réglés via {method}. Téléchargez vos fichiers sources et les guides écrits AR/FR ci-dessous.",
   "checkout.download": "Télécharger",
-  "checkout.fileHint": "Source ZIP + guide vidéo AR/FR",
+  "checkout.fileHint": "Source ZIP + guide écrit AR/FR",
   "checkout.error": "Une erreur est survenue. Merci de réessayer.",
 
   "toast.added": "« {title} » ajouté au panier",
@@ -381,7 +381,7 @@ const ar: Dictionary = {
   "catalog.eyebrow": "مكتبة مختارة بعناية",
   "catalog.title": "قوالب رقمية جاهزة للاستخدام",
   "catalog.subtitle":
-    "كل قالب يأتي بملفات مصدر نظيفة وتحديثات مدى الحياة وفيديوهات تعليمية للمبتدئين بالعربية والفرنسية.",
+    "كل قالب يأتي بملفات مصدر نظيفة وتحديثات مدى الحياة وأدلة مكتوبة للمبتدئين بالعربية والفرنسية.",
   "catalog.showing": "عرض {shown} من {total} قالباً",
   "catalog.empty": "لا توجد قوالب في هذه الفئة بعد.",
   "catalog.reset": "عرض كل القوالب",
@@ -418,7 +418,7 @@ const ar: Dictionary = {
   "preview.ready": "جاهز للتصدير",
   "preview.footerLtr": "محاذاة أصلية من اليسار إلى اليمين (LTR)",
   "preview.footerRtl": "محاذاة أصلية من اليمين إلى اليسار (RTL)",
-  "preview.tutorial": "درس فيديو بالعربية والفرنسية",
+  "preview.tutorial": "دليل مكتوب بالعربية والفرنسية",
   "preview.free": "مجاني",
 
   "cart.title": "سلتك",
@@ -445,9 +445,9 @@ const ar: Dictionary = {
   "checkout.successBadge": "تم تأكيد الطلب",
   "checkout.successTitle": "ملفاتك جاهزة",
   "checkout.successBody":
-    "تم دفع {total} عبر {method}. حمّل ملفاتك المصدرية وأدلة الفيديو بالعربية والفرنسية أدناه.",
+    "تم دفع {total} عبر {method}. حمّل ملفاتك المصدرية وأدلة مكتوبة بالعربية والفرنسية أدناه.",
   "checkout.download": "تحميل",
-  "checkout.fileHint": "ملف ZIP + دليل فيديو بالعربية والفرنسية",
+  "checkout.fileHint": "ملف ZIP + دليل مكتوب بالعربية والفرنسية",
   "checkout.error": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
 
   "toast.added": "تمت إضافة «{title}» إلى السلة",

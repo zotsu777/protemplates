@@ -14,13 +14,14 @@ npm install
 npm run dev      # http://localhost:3000 → redirects to /en
 ```
 
-| Script              | Purpose                                  |
-| ------------------- | ---------------------------------------- |
-| `npm run dev`       | Development server (hot reload)          |
-| `npm run build`     | Production build (37 static pages)       |
-| `npm start`         | Serve the production build               |
-| `npm run lint`      | ESLint (next/core-web-vitals)            |
-| `npm run typecheck` | `tsc --noEmit`                           |
+| Script                      | Purpose                                        |
+| --------------------------- | ---------------------------------------------- |
+| `npm run dev`               | Development server (hot reload)                |
+| `npm run build`             | Production build (40 static pages)             |
+| `npm start`                 | Serve the production build                     |
+| `npm run lint`              | ESLint (next/core-web-vitals)                  |
+| `npm run typecheck`         | `tsc --noEmit`                                 |
+| `npm run generate:downloads`| Rebuild every template ZIP in `public/downloads` |
 
 Optional environment variable:
 
@@ -58,9 +59,17 @@ src/
 │  ├─ i18n/                     Locale config + typed dictionaries
 │  ├─ payments.ts               PaymentProvider interface + mock adapter
 │  ├─ format.ts                 MAD formatting
+│  ├─ downloads.ts              Typed access to generated ZIP metadata
+│  ├─ downloads.generated.json  ZIP sizes/counts (committed)
 │  └─ site.ts                   Site constants
 ├─ types/catalog.ts             Shared domain types
 └─ middleware.ts                Locale negotiation + redirects
+
+scripts/
+├─ generate-templates.mjs       Builds all 10 packages + manifest
+└─ build/                       DOCX, XLSX, PPTX, SVG and HTML generators
+
+public/downloads/               Generated ZIP archives (committed)
 ```
 
 ## Localisation
@@ -82,7 +91,7 @@ Templates are typed objects in `src/lib/templates.ts`:
 {
   id: "tpl-pfe-deck",
   slug: "pfe-defense-pitch-deck",   // drives /[locale]/templates/[slug]
-  category: "pitch",                // freebies | cv | pitch | web | admin | bundle
+  category: "pitch",                // freebies | cv | pitch | web | social | admin | bundle
   priceMad: 49,
   tools: ["PowerPoint", "Figma"],
   gradient: { from: "from-blue-600", to: "to-indigo-700" },
@@ -95,6 +104,45 @@ Templates are typed objects in `src/lib/templates.ts`:
 
 Adding a template automatically produces its detail page, sitemap entry,
 category counts and related-product links.
+
+## Download packages
+
+Every product ships a real, editable archive in `public/downloads/<slug>.zip`.
+The generators use `docx`, `exceljs`, `pptxgenjs` and plain SVG/HTML strings —
+no flattened PNG exports, no placeholder files:
+
+| Slug | Contents |
+| ---- | -------- |
+| `bilingual-student-cv` | 2 CV + 2 cover letters (FR/AR RTL) |
+| `auto-entrepreneur-invoice-kit` | Excel workbook + 4 invoice/quote DOCX |
+| `pfe-defense-pitch-deck` | 18-slide thesis defence deck, FR + AR |
+| `executive-cv-linkedin-banner` | 2 executive CV DOCX + 2 LinkedIn SVG |
+| `moroccan-tpe-admin-pack` | 10 admin/legal DOCX + VAT tracker XLSX |
+| `startup-investor-pitch-deck` | 22-slide investor deck, FR + AR |
+| `cod-ecommerce-landing-page` | Single-file bilingual COD landing page |
+| `tpe-agency-website` | 5-page FR/AR showcase site |
+| `startup-launch-bundle` | Deck + admin pack + site + landing + social kit |
+| `instagram-social-media-kit` | 12 SVG formats + 2 carousel PPTX |
+
+Regenerate after changing any generator:
+
+```bash
+npm run generate:downloads
+```
+
+This rewrites the ZIPs, `public/downloads/manifest.json` and
+`src/lib/downloads.generated.json` (file counts and sizes shown in the UI).
+Both are committed, so a plain `npm run build` works without running the
+generator.
+
+**Free products** link straight to their ZIP from the card, the preview dialog
+and the detail page. **Paid products** go through the cart and the success
+screen of the checkout drawer lists one download link per purchased item.
+
+> Gating note: ZIPs are served as static files under `/downloads`, so anyone
+> with the URL can fetch them. The current checkout is a mock. For real
+> protection, move the archives to private storage and issue short-lived signed
+> URLs from the checkout route once a payment provider is connected.
 
 ## Payments
 

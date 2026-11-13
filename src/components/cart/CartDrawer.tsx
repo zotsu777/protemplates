@@ -17,8 +17,8 @@ import { useEffect, useState } from "react";
 
 import { useCart } from "@/components/providers/CartProvider";
 import { useI18n } from "@/components/providers/LocaleProvider";
-import { useToast } from "@/components/providers/ToastProvider";
 import { Dialog } from "@/components/ui/Dialog";
+import { formatBytes, getDownload } from "@/lib/downloads";
 import { formatMad } from "@/lib/format";
 import { PAYMENT_METHODS, type PaymentIcon } from "@/lib/payments";
 import { getTemplateById, localize } from "@/lib/templates";
@@ -40,7 +40,6 @@ type CheckoutState =
 export function CartDrawer() {
   const { locale, t } = useI18n();
   const { items, isOpen, closeCart, remove, clear } = useCart();
-  const { toast } = useToast();
 
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethodId>("cmi");
   const [state, setState] = useState<CheckoutState>({ status: "idle" });
@@ -149,6 +148,9 @@ export function CartDrawer() {
                 const title = template
                   ? localize(template.title, locale)
                   : line.title[locale];
+                const download = template
+                  ? getDownload(template.slug)
+                  : undefined;
 
                 return (
                   <li
@@ -160,26 +162,28 @@ export function CartDrawer() {
                         {title}
                       </p>
                       <p className="text-[10px] text-slate-500">
-                        {t("checkout.fileHint")}
+                        {download
+                          ? `${download.files} files · ${formatBytes(download.bytes)}`
+                          : t("checkout.fileHint")}
                       </p>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        toast(
-                          t("toast.download", {
-                            file: `${line.templateId}.zip`,
-                          }),
-                        )
-                      }
-                      className="shrink-0 rounded-lg bg-slate-900 px-3 py-1.5 text-[11px] font-bold text-white transition-colors hover:bg-blue-600"
-                    >
-                      <Download
-                        aria-hidden="true"
-                        className="me-1 inline h-3 w-3"
-                      />
-                      {t("checkout.download")}
-                    </button>
+                    {download ? (
+                      <a
+                        href={download.href}
+                        download
+                        className="shrink-0 rounded-lg bg-slate-900 px-3 py-1.5 text-[11px] font-bold text-white transition-colors hover:bg-blue-600"
+                      >
+                        <Download
+                          aria-hidden="true"
+                          className="me-1 inline h-3 w-3"
+                        />
+                        {t("checkout.download")}
+                      </a>
+                    ) : (
+                      <span className="shrink-0 rounded-lg bg-slate-100 px-3 py-1.5 text-[11px] font-bold text-slate-500">
+                        {t("checkout.fileHint")}
+                      </span>
+                    )}
                   </li>
                 );
               })}

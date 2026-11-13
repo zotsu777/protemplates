@@ -39,17 +39,17 @@ export const templates: readonly Template[] = [
       en: [
         "French (LTR) + Arabic (RTL) CV layouts",
         "Matching motivation letter",
-        "12-minute Darija/French customization video",
+        "Step-by-step customization guide (Darija/French)",
       ],
       fr: [
         "Maquettes de CV en français (LTR) et en arabe (RTL)",
         "Lettre de motivation assortie",
-        "Vidéo de personnalisation de 12 min (darija/français)",
+        "Guide de personnalisation pas à pas (darija/français)",
       ],
       ar: [
         "نموذجان للسيرة الذاتية: فرنسي (LTR) وعربي (RTL)",
         "رسالة تحفيزية متناسقة مع التصميم",
-        "فيديو شرح للتخصيص مدته 12 دقيقة بالدارجة والفرنسية",
+        "دليل تخصيص خطوة بخطوة بالدارجة والفرنسية",
       ],
     },
     previews: {
@@ -432,17 +432,17 @@ export const templates: readonly Template[] = [
       en: [
         "Five pages: home, services, about, portfolio, contact",
         "Full Arabic RTL and French bilingual toggle",
-        "25-minute deployment and hosting tutorial",
+        "Deployment and hosting guide (FR/AR)",
       ],
       fr: [
         "Cinq pages : accueil, services, à propos, portfolio, contact",
         "Bascule bilingue arabe RTL et français",
-        "Tutoriel de déploiement et d’hébergement de 25 min",
+        "Guide de déploiement et d’hébergement (FR/AR)",
       ],
       ar: [
         "خمس صفحات: الرئيسية، الخدمات، من نحن، الأعمال، اتصل بنا",
         "تبديل كامل بين العربية (RTL) والفرنسية",
-        "درس فيديو للنشر والاستضافة مدته 25 دقيقة",
+        "دليل النشر والاستضافة (بالعربية والفرنسية)",
       ],
     },
     previews: {
@@ -508,14 +508,14 @@ export const templates: readonly Template[] = [
         heading: "Site web + pitch deck + identité + docs légaux",
         sub: "Tout le nécessaire pour lancer votre projet au Maroc en un week-end",
         factOne: "Inclus : code source du site + 22 slides + kit logo",
-        factTwo: "Support prioritaire WhatsApp + guides vidéo AR/FR",
+        factTwo: "Support prioritaire WhatsApp + guides écrits AR/FR",
       },
       ar: {
         badge: "الحزمة المتكاملة للمقاولات الناشئة · وفر 40%",
         heading: "موقع إلكتروني + عرض استثماري + هوية بصرية + وثائق",
         sub: "كل ما تحتاجه لإطلاق مشروعك بالمغرب في عطلة نهاية أسبوع واحدة",
         factOne: "يشمل: موقع متكامل + 22 شريحة عرض + نماذج الفواتير",
-        factTwo: "دعم فني مباشر + فيديوهات شرح بالعربية والفرنسية",
+        factTwo: "دعم فني مباشر + أدلة مكتوبة بالعربية والفرنسية",
       },
     },
   },

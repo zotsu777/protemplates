@@ -1,43 +1,43 @@
 {
   "bilingual-student-cv": {
     "href": "/downloads/bilingual-student-cv.zip",
-    "bytes": 38739,
-    "rawBytes": 44886,
+    "bytes": 38744,
+    "rawBytes": 44892,
     "files": 5,
     "label": "CV + lettre de motivation (FR/AR)"
   },
   "auto-entrepreneur-invoice-kit": {
     "href": "/downloads/auto-entrepreneur-invoice-kit.zip",
-    "bytes": 49050,
-    "rawBytes": 56869,
+    "bytes": 49239,
+    "rawBytes": 57045,
     "files": 6,
     "label": "Factures & devis Excel + Word"
   },
   "pfe-defense-pitch-deck": {
     "href": "/downloads/pfe-defense-pitch-deck.zip",
-    "bytes": 43149,
-    "rawBytes": 613327,
+    "bytes": 43175,
+    "rawBytes": 613354,
     "files": 3,
     "label": "Deck PFE 18 slides (FR/AR)"
   },
   "executive-cv-linkedin-banner": {
     "href": "/downloads/executive-cv-linkedin-banner.zip",
-    "bytes": 21714,
-    "rawBytes": 26632,
+    "bytes": 21727,
+    "rawBytes": 26641,
     "files": 5,
     "label": "CV exécutif + bannières LinkedIn"
   },
   "moroccan-tpe-admin-pack": {
     "href": "/downloads/moroccan-tpe-admin-pack.zip",
-    "bytes": 107088,
-    "rawBytes": 122424,
+    "bytes": 107076,
+    "rawBytes": 122425,
     "files": 12,
     "label": "10 documents administratifs + suivi TVA"
   },
   "startup-investor-pitch-deck": {
     "href": "/downloads/startup-investor-pitch-deck.zip",
-    "bytes": 50104,
-    "rawBytes": 791462,
+    "bytes": 50145,
+    "rawBytes": 791582,
     "files": 3,
     "label": "Deck investisseurs 22 slides (FR/AR)"
   },
@@ -57,17 +57,17 @@
   },
   "startup-launch-bundle": {
     "href": "/downloads/startup-launch-bundle.zip",
-    "bytes": 211333,
-    "rawBytes": 1076054,
-    "files": 40,
+    "bytes": 236208,
+    "rawBytes": 1436187,
+    "files": 42,
     "label": "Bundle 5 produits (deck, admin, site, COD, social)"
   },
   "instagram-social-media-kit": {
     "href": "/downloads/instagram-social-media-kit.zip",
-    "bytes": 38659,
-    "rawBytes": 395758,
+    "bytes": 38686,
+    "rawBytes": 395779,
     "files": 19,
     "label": "12 visuels SVG + 2 carrousels PPTX"
   },
-  "generatedAt": "2026-11-13T20:50:04.420Z"
+  "generatedAt": "2026-11-13T21:09:40.706Z"
 }

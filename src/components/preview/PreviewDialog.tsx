@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, CirclePlay, Languages, ShoppingCart, X } from "lucide-react";
+import { Check, CirclePlay, Download, Languages, ShoppingCart, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { useCart } from "@/components/providers/CartProvider";
@@ -8,6 +8,7 @@ import { useI18n } from "@/components/providers/LocaleProvider";
 import { useToast } from "@/components/providers/ToastProvider";
 import { PreviewCanvas } from "@/components/preview/PreviewCanvas";
 import { Dialog } from "@/components/ui/Dialog";
+import { formatBytes, getDownload } from "@/lib/downloads";
 import { formatMad } from "@/lib/format";
 import { localize } from "@/lib/templates";
 import { cn } from "@/lib/utils";
@@ -30,6 +31,7 @@ export function PreviewDialog({ template, onClose }: PreviewDialogProps) {
 
   const isInCart = template ? items.includes(template.id) : false;
   const isFree = template?.priceMad === 0;
+  const download = template ? getDownload(template.slug) : undefined;
 
   function handleAdd() {
     if (!template) return;
@@ -165,24 +167,38 @@ export function PreviewDialog({ template, onClose }: PreviewDialogProps) {
               </div>
 
               <div className="mt-8 flex flex-col gap-2.5 border-t border-slate-200 pt-4">
-                <button
-                  type="button"
-                  onClick={handleAdd}
-                  disabled={isInCart}
-                  className={cn(
-                    "flex w-full items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-bold transition-all",
-                    isInCart
-                      ? "cursor-default bg-emerald-50 text-emerald-700"
-                      : "bg-blue-600 text-white shadow-lg shadow-blue-600/25 hover:bg-blue-500",
-                  )}
-                >
-                  {isInCart ? (
-                    <Check aria-hidden="true" className="h-4 w-4" />
-                  ) : (
-                    <ShoppingCart aria-hidden="true" className="h-4 w-4" />
-                  )}
-                  {isInCart ? t("preview.inCart") : t("preview.add")}
-                </button>
+                {isFree && download ? (
+                  <a
+                    href={download.href}
+                    download
+                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 py-3.5 text-sm font-bold text-slate-950 shadow-lg shadow-emerald-500/25 transition-colors hover:bg-emerald-400"
+                  >
+                    <Download aria-hidden="true" className="h-4 w-4" />
+                    {t("detail.addFree")}
+                    <span className="text-xs font-semibold opacity-70">
+                      {download.files} files · {formatBytes(download.bytes)}
+                    </span>
+                  </a>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handleAdd}
+                    disabled={isInCart}
+                    className={cn(
+                      "flex w-full items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-bold transition-all",
+                      isInCart
+                        ? "cursor-default bg-emerald-50 text-emerald-700"
+                        : "bg-blue-600 text-white shadow-lg shadow-blue-600/25 hover:bg-blue-500",
+                    )}
+                  >
+                    {isInCart ? (
+                      <Check aria-hidden="true" className="h-4 w-4" />
+                    ) : (
+                      <ShoppingCart aria-hidden="true" className="h-4 w-4" />
+                    )}
+                    {isInCart ? t("preview.inCart") : t("preview.add")}
+                  </button>
+                )}
                 <p className="text-center text-[11px] text-slate-500">
                   <Languages
                     aria-hidden="true"
