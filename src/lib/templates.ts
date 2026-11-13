@@ -519,6 +519,62 @@ export const templates: readonly Template[] = [
       },
     },
   },
+  {
+    id: "tpl-social-kit",
+    slug: "instagram-social-media-kit",
+    category: "social",
+    priceMad: 89,
+    tools: ["Figma", "PowerPoint", "Canva"],
+    gradient: { from: "from-fuchsia-500", to: "to-rose-500" },
+    title: {
+      en: "Instagram & Social Media Kit — 12 Editable Visuals",
+      fr: "Kit Instagram & Réseaux Sociaux — 12 Visuels Éditables",
+      ar: "حزمة إنستغرام وشبكات التواصل — 12 تصميماً قابلاً للتعديل",
+    },
+    categoryLabel: {
+      en: "Social kit",
+      fr: "Kit social",
+      ar: "حزمة الشبكات الاجتماعية",
+    },
+    description: {
+      en: "Twelve vector visuals covering every format you need — square posts, 4:5, stories, LinkedIn banners, YouTube thumbnail, X header — plus two 10-slide carousels in PowerPoint, in French and Arabic.",
+      fr: "Douze visuels vectoriels qui couvrent tous les formats utiles — posts carrés, 4:5, stories, bannières LinkedIn, miniature YouTube, en-tête X — et deux carrousels de 10 slides dans PowerPoint, en français et en arabe.",
+      ar: "اثنا عشر تصميماً متجهياً تغطي كل الصيغ المطلوبة — منشورات مربعة، 4:5، ستوري، بانرات لينكد إن، مصغّرة يوتيوب، ترويسة X — مع عرضين متسلسلين من 10 شرائح داخل PowerPoint، بالفرنسية والعربية.",
+    },
+    includes: {
+      en: [
+        "12 SVG visuals: 1080×1080, 4:5, 1080×1920, LinkedIn, YouTube, X, Facebook",
+        "Two 10-slide carousels (.pptx) in French and Arabic RTL",
+        "Layered, editable text — no flattened PNG exports",
+      ],
+      fr: [
+        "12 visuels SVG : 1080×1080, 4:5, 1080×1920, LinkedIn, YouTube, X, Facebook",
+        "Deux carrousels de 10 slides (.pptx) en français et en arabe RTL",
+        "Textes calques et modifiables — aucun export PNG aplati",
+      ],
+      ar: [
+        "12 تصميماً SVG: 1080×1080 و4:5 و1080×1920 ولينكد إن ويوتيوب وX وفايسبوك",
+        "عرضان متسلسلان من 10 شرائح (.pptx) بالفرنسية والعربية RTL",
+        "نصوص قابلة للتعديل بالكامل — دون تصدير صور مسطحة",
+      ],
+    },
+    previews: {
+      fr: {
+        badge: "Kit réseaux sociaux · 12 formats",
+        heading: "5 erreurs qui tuent votre présence Instagram",
+        sub: "Carrousel de 10 slides · posts 1080×1080 · stories 1080×1920",
+        factOne: "Formats inclus : Instagram, LinkedIn, YouTube, Facebook, X",
+        factTwo: "Fichiers SVG vectoriels + carrousels PowerPoint éditables",
+      },
+      ar: {
+        badge: "حزمة الشبكات الاجتماعية · 12 صيغة",
+        heading: "5 أخطاء تقتل حضورك على إنستغرام",
+        sub: "عرض متسلسل من 10 شرائح · منشورات 1080×1080 · ستوري 1080×1920",
+        factOne: "الصيغ: إنستغرام، لينكد إن، يوتيوب، فايسبوك، X",
+        factTwo: "ملفات SVG متجهية + عروض PowerPoint قابلة للتعديل",
+      },
+    },
+  },
 ];
 
 export const CATALOG_FILTERS: readonly CatalogFilter[] = [
@@ -527,6 +583,7 @@ export const CATALOG_FILTERS: readonly CatalogFilter[] = [
   "cv",
   "pitch",
   "web",
+  "social",
   "admin",
   "bundle",
 ];
@@ -536,6 +593,7 @@ export const TEMPLATE_CATEGORIES: readonly TemplateCategory[] = [
   "cv",
   "pitch",
   "web",
+  "social",
   "admin",
   "bundle",
 ];

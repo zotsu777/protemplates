@@ -145,17 +145,28 @@ export function Footer({ locale }: { locale: Locale }) {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-800/80 pt-8 text-xs text-slate-500 sm:flex-row">
-          <p>{dict["footer.rights"].replace("{year}", String(year))}</p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <span className="inline-flex items-center gap-1.5 text-slate-400">
-              <ShieldCheck aria-hidden="true" className="h-4 w-4 text-emerald-500" />
-              {dict["footer.verified"]}
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Sparkles aria-hidden="true" className="h-3.5 w-3.5" />
-              {dict["footer.original"]}
-            </span>
+        <div className="mt-12 flex flex-col gap-6 border-t border-slate-800/80 pt-8">
+          <div className="flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                {dict["footer.developersTitle"]}
+              </p>
+              <p className="mt-1 text-sm text-slate-300">{dict["footer.developers"]}</p>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
+              <span className="inline-flex items-center gap-1.5 text-slate-400">
+                <ShieldCheck aria-hidden="true" className="h-4 w-4 text-emerald-500" />
+                {dict["footer.verified"]}
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Sparkles aria-hidden="true" className="h-3.5 w-3.5" />
+                {dict["footer.original"]}
+              </span>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center justify-between gap-4 text-xs text-slate-500 sm:flex-row">
+            <p>{dict["footer.rights"].replace("{year}", String(year))}</p>
           </div>
         </div>
       </div>

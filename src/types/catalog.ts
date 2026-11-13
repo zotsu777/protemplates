@@ -18,6 +18,7 @@ export type TemplateCategory =
   | "cv"
   | "pitch"
   | "web"
+  | "social"
   | "admin"
   | "bundle";
 
