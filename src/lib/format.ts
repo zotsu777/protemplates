@@ -6,6 +6,12 @@ const LOCALE_TAGS: Record<Locale, string> = {
   ar: "ar-MA",
 };
 
+const CURRENCY_LABEL: Record<Locale, string> = {
+  en: "MAD",
+  fr: "MAD",
+  ar: "درهم",
+};
+
 /**
  * Formats a price in Moroccan dirhams. Prices are stored as whole dirhams,
  * which matches how the products are sold (49, 79, 149 MAD — no centimes).
@@ -15,7 +21,7 @@ export function formatMad(amount: number, locale: Locale = "en"): string {
     maximumFractionDigits: 0,
   }).format(amount);
 
-  return `${value} MAD`;
+  return `${value} ${CURRENCY_LABEL[locale]}`;
 }
 
 /** "49–79 MAD" style range used by the pricing tiers. */
@@ -23,5 +29,5 @@ export function formatMadRange(min: number, max: number, locale: Locale): string
   const format = new Intl.NumberFormat(LOCALE_TAGS[locale], {
     maximumFractionDigits: 0,
   });
-  return `${format.format(min)}–${format.format(max)} MAD`;
+  return `${format.format(min)}–${format.format(max)} ${CURRENCY_LABEL[locale]}`;
 }

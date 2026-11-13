@@ -1,26 +1,142 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-brand-navy: #0f172a;
+  --color-brand-blue: #2563eb;
+  --color-brand-emerald: #10b981;
 }
 
+/* `inline` keeps the next/font CSS variables unresolved until they are used,
+   so they can be declared on <html> at runtime. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: var(--font-cairo), var(--font-inter), ui-sans-serif, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-blue-600);
+    color: #fff;
+  }
+
+  /* Visible focus for keyboard users only. */
+  :focus-visible {
+    outline: 2px solid var(--color-blue-600);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* The body carries `font-sans`, and Tailwind's utilities layer outranks the
+   base layer, so the Arabic face is applied outside @layer to win the
+   cascade. */
+html[lang="ar"] body {
+  font-family: var(--font-cairo), var(--font-inter), ui-sans-serif, sans-serif;
+}
+
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Motion
+   Keyframes are plain CSS so they can be reused by both dialogs and toasts.
+   --------------------------------------------------------------------------- */
+
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes drawer-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes drawer-in-rtl {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-overlay-in {
+  animation: overlay-in 180ms ease-out both;
+}
+
+.animate-panel-in {
+  animation: panel-in 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-drawer-in {
+  animation: drawer-in 260ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+html[dir="rtl"] .animate-drawer-in {
+  animation-name: drawer-in-rtl;
+}
+
+.animate-toast-in {
+  animation: toast-in 180ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-overlay-in,
+  .animate-panel-in,
+  .animate-drawer-in,
+  .animate-toast-in {
+    animation: none;
+  }
 }

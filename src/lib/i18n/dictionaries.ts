@@ -8,6 +8,7 @@ import type { Locale } from "@/types/catalog";
  * missing or misspelled key in `fr` / `ar` fails the build.
  */
 const en = {
+  "meta.title": "ProTemplates — Moroccan Digital Template Marketplace",
   "meta.description":
     "Ready-to-edit CVs, PFE pitch decks, websites and Moroccan admin documents. Native Arabic (RTL) and French support with local MAD checkout — editable in under 30 minutes.",
 
@@ -15,6 +16,7 @@ const en = {
   "a11y.openMenu": "Open menu",
   "a11y.closeMenu": "Close menu",
   "a11y.cartCount": "{count} items in cart",
+  "a11y.cartCountOne": "1 item in cart",
 
   "brand.market": "MA",
 
@@ -126,6 +128,7 @@ const en = {
   "pricing.subtitle":
     "Pay once in Moroccan dirhams. No hidden subscriptions, no foreign-currency bank fees.",
   "pricing.bestValue": "Best value",
+  "pricing.currency": "MAD",
   "pricing.perForever": "/ forever",
 
   "why.eyebrow": "Our competitive edge",
@@ -170,6 +173,7 @@ export type Dictionary = typeof en;
 export type TranslationKey = keyof Dictionary;
 
 const fr: Dictionary = {
+  "meta.title": "ProTemplates — Marketplace de templates digitaux marocains",
   "meta.description":
     "CV, pitch decks PFE, sites web et documents administratifs marocains prêts à modifier. Support natif arabe (RTL) et français, paiement local en MAD, personnalisable en moins de 30 minutes.",
 
@@ -177,6 +181,7 @@ const fr: Dictionary = {
   "a11y.openMenu": "Ouvrir le menu",
   "a11y.closeMenu": "Fermer le menu",
   "a11y.cartCount": "{count} articles dans le panier",
+  "a11y.cartCountOne": "1 article dans le panier",
 
   "brand.market": "MA",
 
@@ -288,6 +293,7 @@ const fr: Dictionary = {
   "pricing.subtitle":
     "Payez une seule fois en dirhams. Aucun abonnement caché, aucuns frais de change.",
   "pricing.bestValue": "Meilleur rapport qualité-prix",
+  "pricing.currency": "MAD",
   "pricing.perForever": "/ à vie",
 
   "why.eyebrow": "Notre différence",
@@ -328,6 +334,7 @@ const fr: Dictionary = {
 };
 
 const ar: Dictionary = {
+  "meta.title": "ProTemplates — متجر القوالب الرقمية المغربية",
   "meta.description":
     "سير ذاتية وعروض مشاريع تخرج ومواقع ووثائق إدارية مغربية جاهزة للتعديل. دعم كامل للعربية (RTL) والفرنسية مع دفع محلي بالدرهم وتعديل في أقل من 30 دقيقة.",
 
@@ -335,6 +342,7 @@ const ar: Dictionary = {
   "a11y.openMenu": "فتح القائمة",
   "a11y.closeMenu": "إغلاق القائمة",
   "a11y.cartCount": "{count} عناصر في السلة",
+  "a11y.cartCountOne": "عنصر واحد في السلة",
 
   "brand.market": "MA",
 
@@ -445,6 +453,7 @@ const ar: Dictionary = {
   "pricing.subtitle":
     "ادفع مرة واحدة بالدرهم المغربي. بدون اشتراكات خفية أو رسوم تحويل العملة.",
   "pricing.bestValue": "أفضل قيمة",
+  "pricing.currency": "درهم",
   "pricing.perForever": "/ مدى الحياة",
 
   "why.eyebrow": "ميزتنا التنافسية",
